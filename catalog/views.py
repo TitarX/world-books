@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views import generic
 from .models import *
 
 
@@ -20,3 +21,17 @@ def index(request):
     }
 
     return render(request, 'catalog/front.html', context=context)
+
+
+class BookListView(generic.ListView):
+    model = Book
+    paginate_by = 4
+
+
+class BookDetailView(generic.DetailView):
+    model = Book
+
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 2
