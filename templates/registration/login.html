@@ -1,0 +1,35 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+    {% if form.errors %}
+        <p>Имя пользователя и пароль некорректны, попробуйте ещё раз</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Вы не имеете доступа к этой странице</p>
+        {% else %}
+            <p>Войдите в систему, чтобы увидеть эту страницу</p>
+        {% endif %}
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+
+        <input type="hidden" name="next" value="{{ next }}">
+        <input type="submit" value="Вход">
+    </form>
+
+    {# Должно быть настроено представление password_reset в своём URLconf #}
+    <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+{% endblock %}
