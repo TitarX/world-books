@@ -28,6 +28,7 @@
                     <li><a href="{% url 'authors' %}">Все авторы</a></li>
                     {% if user.is_authenticated %}
                         <li>Пользователь: <strong>{{ user.get_username }}</strong></li>
+                        <li><a href="{% url 'my_borrowed' %}">Мои книги</a></li>
                         <li><a href="{% url 'logout' %}?next={{ request.path }}">Выйти</a></li>
                     {% else %}
                         <li><a href="{% url 'login' %}?next={{ request.path }}">Войти</a></li>

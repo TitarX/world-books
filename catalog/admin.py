@@ -21,7 +21,7 @@ class BookAdmin(admin.ModelAdmin):
 
 @admin.register(BookInstance)  # Декоратор @register
 class BookInstanceAdmin(admin.ModelAdmin):
-    list_filter = ('book', 'status')
+    list_filter = ('book', 'status', 'borrower')
     fieldsets = (
         (
             'Экземпляры книг',
@@ -32,7 +32,7 @@ class BookInstanceAdmin(admin.ModelAdmin):
         (
             'Статус и окончание его действия',
             {
-                'fields': ('status', 'due_back')
+                'fields': ('status', 'due_back', 'borrower')
             }
         )
     )
