@@ -1,0 +1,14 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+    <h3>Список авторов</h3>
+    <h4>{{ author.first_name }} {{ author.last_name }}</h4>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p><label for="first_name"></label><input name="first_name" id="first_name" type="text" value="{{ author.first_name }}"></p>
+        <p><label for="last_name"></label><input name="last_name" id="last_name" type="text" value="{{ author.last_name }}"></p>
+        <p><label for="date_of_birth"></label><input name="date_of_birth" id="date_of_birth" type="date" value="{{ author.date_of_birth.isoformat }}"></p>
+        <p><label for="date_of_death"></label><input name="date_of_death" id="date_of_death" type="date" value="{{ author.date_of_death.isoformat }}"></p>
+        <input type="submit" value="Отправить">
+    </form>
+{% endblock %}

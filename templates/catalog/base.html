@@ -25,10 +25,12 @@
                 <ul class="sidebar-nav">
                     <li><a href="{% url 'front' %}">Главная</a></li>
                     <li><a href="{% url 'books' %}">Все книги</a></li>
+                    <li><a href="{% url 'book-create' %}">Добавить книгу</a></li>
                     <li><a href="{% url 'authors' %}">Все авторы</a></li>
+                    <li><a href="{% url 'author-add' %}">Добавить авторов</a></li>
                     {% if user.is_authenticated %}
                         <li>Пользователь: <strong>{{ user.get_username }}</strong></li>
-                        <li><a href="{% url 'my_borrowed' %}">Мои книги</a></li>
+                        <li><a href="{% url 'my-borrowed' %}">Мои книги</a></li>
                         <li><a href="{% url 'logout' %}?next={{ request.path }}">Выйти</a></li>
                     {% else %}
                         <li><a href="{% url 'login' %}?next={{ request.path }}">Войти</a></li>
